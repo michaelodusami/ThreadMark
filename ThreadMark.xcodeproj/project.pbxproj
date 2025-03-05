@@ -79,6 +79,7 @@
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1620;
+				ORGANIZATIONNAME = "Michael-Andre Odusami";
 				TargetAttributes = {
 					991F99832D78BC3700D539FA = {
 						CreatedOnToolsVersion = 16.2;
