@@ -18,7 +18,7 @@ struct CategorySelector: View {
 
         Picker("Category", selection: $selectedCategory) {
             ForEach(bookmarkCategories, id: \.self) { aCat in
-                Text(aCat.capitalized).tag(aCat as String?)
+                Text(aCat.capitalized).tag(aCat as String)
                     .font(.headline)
                     .foregroundColor(.primary)
             }

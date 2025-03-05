@@ -25,7 +25,9 @@ struct BookmarkDetailView: View {
             }
             Spacer()
         }
-        .navigationTitle("Your Bookmark")
+        .padding()
+        .navigationTitle(bookmark.title ?? "Your bookmark")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

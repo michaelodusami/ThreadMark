@@ -13,7 +13,7 @@ struct ContentView: View {
 
     var body: some View {
         TabView {
-            Tab("Bookmarks", systemImage: "house"){
+            Tab("Bookmarks", systemImage: "bookmark.fill"){
                 ThreadedBookmarksTabView()
             }
         }

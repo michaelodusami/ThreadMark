@@ -12,6 +12,7 @@ struct AddBookmarkView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
+    @State private var title: String = ""
     @State private var content: String = ""
     @State private var selectedCategory: String? = bookmarkCategories.first
     @State private var source: String = ""
@@ -19,8 +20,16 @@ struct AddBookmarkView: View {
     var body: some View {
         NavigationStack {
             Form {
+                
+
+                Section(header: Text("Title of bookmark")){
+                    TextField("Enter the title of your bookmark", text: $title)
+                }
+                
                 Section(header: Text("Bookmark Content")){
-                    TextField("Enter text, URL, or note", text: $content)
+                    TextEditor(text: $content)
+                            .frame(minHeight: 100) // Adjust height as needed
+
                 }
                 
                 Section(header: Text("Category")){
@@ -45,6 +54,7 @@ struct AddBookmarkView: View {
             guard let category = selectedCategory, !content.isEmpty else { return }
             let newBookmark = Bookmark(context: viewContext)
             newBookmark.id = UUID()
+            newBookmark.title = title
             newBookmark.content = content
             newBookmark.category = category
             newBookmark.createdAt = Date()
