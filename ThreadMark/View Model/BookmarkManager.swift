@@ -10,17 +10,10 @@ import CoreData
 import Foundation
 import SwiftUI
 
-let bookmarkCategories = [
-    "tech", "productivity", "science", "home", "personal", "personal", "health",
-    "other",
-]
-
-@Observable
 class BookmarkManager {
 
     static let shared = BookmarkManager()
     let container: NSPersistentContainer
-    // var bookmarks: [Bookmark] = []
 
     @MainActor
     static let preview: BookmarkManager = {
@@ -76,13 +69,3 @@ class BookmarkManager {
 
 }
 
-func exampleBookmark() -> Bookmark {
-    let context = BookmarkManager.shared.container.viewContext
-    let bookmark = Bookmark(context: context)
-    bookmark.id = UUID()
-    bookmark.content = "This is an example bookmark about SwiftUI and CoreData."
-    bookmark.category = "Tech"
-    bookmark.createdAt = Date()
-    bookmark.source = "https://developer.apple.com/documentation/swiftui"
-    return bookmark
-}

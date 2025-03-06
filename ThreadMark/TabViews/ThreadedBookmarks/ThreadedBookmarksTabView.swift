@@ -31,6 +31,13 @@ struct ThreadedBookmarksTabView: View {
      - Add bookmark Screen
      - Bookmark Detail Screen
      */
+    
+    /*
+     Feature 2:
+     Users can assign custom tags and later search or filter by them (e.g., “SwiftUI,” “Leadership,” “Startups”).
+     - need to allow users to select tags when adding a bookmark
+     - need to allow users to filter by tags on the bookmark list page
+     */
 
     @Environment(\.managedObjectContext) private var viewContext
 
@@ -41,20 +48,43 @@ struct ThreadedBookmarksTabView: View {
     var bookmarks: FetchedResults<Bookmark>
 
     @State private var showAddBookmark = false
+    @State private var searchQuery: String = ""
+    
+    var filteredBookmarks: [Bookmark] {
+        if searchQuery.isEmpty {
+            return Array(bookmarks)
+        }
+        else {
+            return bookmarks.filter { bookmark in
+                if let tags = bookmark.tags {
+                    return tags.contains {$0.localizedCaseInsensitiveContains(searchQuery)}
+                }
+                return false
+            }
+        }
+    }
 
     var body: some View {
         NavigationStack {
             List {
-                ForEach(bookmarks, id: \.id) { aBookmark in
+                ForEach(filteredBookmarks, id: \.id) { aBookmark in
                     NavigationLink(
                         destination: BookmarkDetailView(bookmark: aBookmark)
                     ) {
                         VStack(alignment: .leading) {
                             Text(aBookmark.content ?? "")
                                 .lineLimit(1)
-                            Text(aBookmark.category?.capitalized ?? "")
-                                .font(.subheadline)
-                                .foregroundStyle(.secondary)
+                            HStack {
+                                Text(aBookmark.category?.capitalized ?? "")
+                                    .font(.subheadline)
+                                    .foregroundStyle(.secondary)
+                                if let tags = aBookmark.tags, !tags.isEmpty {
+                                    Text(tags.joined(separator: ", "))
+                                        .font(.caption)
+                                        .foregroundStyle(.blue)
+                                }
+                            }
+                            
                         }
                     }
                 }
@@ -66,6 +96,7 @@ struct ThreadedBookmarksTabView: View {
                     }
                 }
             }
+            .searchable(text: $searchQuery, prompt: "Search by tags")
             .listStyle(.plain)
             .navigationTitle("Bookmarks")
             .navigationBarItems(

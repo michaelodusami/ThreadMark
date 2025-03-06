@@ -6,7 +6,7 @@
         <attribute name="createdAt" attributeType="Date" defaultDateTimeInterval="762888600" usesScalarValueType="NO"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="source" optional="YES" attributeType="String"/>
-        <attribute name="tags" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
+        <attribute name="tags" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="[String]"/>
         <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
 </model>

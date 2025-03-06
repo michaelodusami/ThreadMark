@@ -6,8 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		9985528B2D7976960045B50E /* PROGRESS in Resources */ = {isa = PBXBuildFile; fileRef = 9985528A2D79768C0045B50E /* PROGRESS */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		991F99842D78BC3800D539FA /* ThreadMark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThreadMark.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9985528A2D79768C0045B50E /* PROGRESS */ = {isa = PBXFileReference; lastKnownFileType = text; path = PROGRESS; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -45,6 +50,7 @@
 		991F997B2D78BC3700D539FA = {
 			isa = PBXGroup;
 			children = (
+				9985528A2D79768C0045B50E /* PROGRESS */,
 				991F99862D78BC3800D539FA /* ThreadMark */,
 				991F99852D78BC3800D539FA /* Products */,
 			);
@@ -123,6 +129,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9985528B2D7976960045B50E /* PROGRESS in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
